@@ -1,0 +1,306 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #00ff41;
+  --dim: #00ff4188;
+  --muted: #00ff4133;
+  --alert: #ff003c;
+  --warn: #ffb000;
+  --link: #00d4ff;
+  --panel: #0a0f0a;
+  --border: #00ff4122;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-mono);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-mono), ui-monospace, "Cascadia Code", "SF Mono",
+    Menlo, monospace;
+  overflow-x: hidden;
+  cursor: auto;
+}
+
+/* Kill any leftover custom-cursor hooks */
+[data-cursor],
+a,
+button {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  cursor: text;
+}
+
+::selection {
+  background: rgba(0, 255, 65, 0.35);
+  color: #000;
+}
+
+/* Terminal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+  border-left: 1px solid #00ff4122;
+}
+::-webkit-scrollbar-thumb {
+  background: #00ff4144;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00ff41aa;
+}
+
+/* Scanline overlay */
+.crt::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  opacity: 0.45;
+}
+
+/* Soft vignette + phosphor glow */
+.crt::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9989;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  box-shadow: inset 0 0 120px rgba(0, 255, 65, 0.04);
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.85;
+  }
+  94% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.9;
+  }
+  97% {
+    opacity: 1;
+  }
+}
+
+@keyframes scan-down {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 110%;
+  }
+}
+
+@keyframes glitch-shift {
+  0%,
+  100% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+  20% {
+    transform: translate(-1px, 0);
+    text-shadow: 1px 0 #ff003c, -1px 0 #00d4ff;
+  }
+  40% {
+    transform: translate(1px, 0);
+    text-shadow: -1px 0 #ff003c, 1px 0 #00d4ff;
+  }
+  60% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.cursor-blink::after {
+  content: "█";
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  color: #00ff41;
+}
+
+.glitch-hover:hover {
+  animation: glitch-shift 0.35s steps(2) infinite;
+}
+
+.terminal-panel {
+  background: #050a05;
+  border: 1px solid #00ff4128;
+  box-shadow: 0 0 0 1px #000, 0 0 40px rgba(0, 255, 65, 0.04);
+}
+
+.terminal-input {
+  width: 100%;
+  background: #000;
+  border: 1px solid #00ff4133;
+  color: #00ff41;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.terminal-input::placeholder {
+  color: #00ff4133;
+}
+
+.terminal-input:focus {
+  border-color: #00ff41aa;
+  box-shadow: 0 0 0 1px #00ff4144, 0 0 20px rgba(0, 255, 65, 0.08);
+}
+
+.terminal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid #00ff41;
+  background: transparent;
+  color: #00ff41;
+  font-family: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.25rem;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.terminal-btn:hover {
+  background: #00ff41;
+  color: #000;
+  box-shadow: 0 0 24px rgba(0, 255, 65, 0.35);
+}
+
+.terminal-btn:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.terminal-btn-filled {
+  background: #00ff41;
+  color: #000;
+}
+
+.terminal-btn-filled:hover {
+  background: #00ff41cc;
+  color: #000;
+  box-shadow: 0 0 28px rgba(0, 255, 65, 0.4);
+}
+
+.term-label {
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #00ff4166;
+}
+
+.phosphor {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.45);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Horizontal marquee for archive strip */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Subtle CRT flicker on main chrome */
+.crt {
+  animation: flicker 8s infinite;
+}
+
+/* Selection already set; ensure focus rings stay terminal */
+:focus-visible {
+  outline: 1px solid #00ff41;
+  outline-offset: 2px;
+}
