@@ -57,7 +57,10 @@ export function About() {
 
         <div className="mt-8 grid gap-3 sm:grid-cols-3">
           {STATS.map((stat) => (
-            <div key={stat.label} className="terminal-panel p-5">
+            <div
+              key={stat.label}
+              className="terminal-panel p-5"
+            >
               <p className="font-mono text-[10px] tracking-[0.3em] text-[#00ff41]/40 uppercase">
                 {stat.label}
               </p>

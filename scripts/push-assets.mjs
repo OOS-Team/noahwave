@@ -2,7 +2,7 @@
  * Upload media + full source to GitHub via Git Data API (binary-safe).
  * Works without system git / Xcode license.
  *
- *   export GITHUB_TOKEN=ghp_xxxxxxxx
+ *   export GITHUB_TOKEN=ghp_xxxxxxxx   # https://github.com/settings/tokens  scope: repo
  *   node scripts/push-assets.mjs
  */
 import fs from "node:fs";
@@ -17,7 +17,16 @@ const BRANCH = process.env.GITHUB_BRANCH || "main";
 const TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
 
 if (!TOKEN) {
-  console.error(`\nMissing GITHUB_TOKEN.\n\n1. Open https://github.com/settings/tokens\n2. Generate new token (classic) → enable scope: repo\n3. Run:\n\n   export GITHUB_TOKEN=ghp_your_token_here\n   node scripts/push-assets.mjs\n`);
+  console.error(`
+Missing GITHUB_TOKEN.
+
+1. Open https://github.com/settings/tokens
+2. Generate new token (classic) → enable scope: repo
+3. Run:
+
+   export GITHUB_TOKEN=ghp_your_token_here
+   node scripts/push-assets.mjs
+`);
   process.exit(1);
 }
 
@@ -35,13 +44,7 @@ function walk(dir, prefix = "") {
     if (SKIP.has(name)) continue;
     if (name === ".env.local" || name === ".DS_Store") continue;
     if (name.endsWith(".tsbuildinfo") || name === "next-env.d.ts") continue;
-    if (
-      name.startsWith(".mcp") ||
-      name.startsWith(".vercel-push") ||
-      name.startsWith(".gallery") ||
-      name.startsWith(".push") ||
-      name.startsWith(".upload")
-    )
+    if (name.startsWith(".mcp") || name.startsWith(".vercel-push") || name.startsWith(".gallery") || name.startsWith(".push") || name.startsWith(".upload"))
       continue;
     const abs = path.join(dir, name);
     const rel = prefix ? `${prefix}/${name}` : name;
@@ -87,9 +90,8 @@ for (let i = 0; i < files.length; i += BATCH) {
   await Promise.all(
     slice.map(async (rel) => {
       const buf = fs.readFileSync(path.join(ROOT, rel));
-      const isText =
-        !/\.(png|jpe?g|webp|gif|mp4|webm|mov|ico|woff2?|ttf|wasm|bin)$/i.test(rel) &&
-        !rel.includes("model-shard");
+      const isText = !/\.(png|jpe?g|webp|gif|mp4|webm|mov|ico|woff2?|ttf|wasm|bin)$/i.test(rel)
+        && !rel.includes("model-shard");
       const blob = await gh(`/repos/${OWNER}/${REPO}/git/blobs`, {
         method: "POST",
         body: JSON.stringify(
@@ -113,7 +115,8 @@ const newTree = await gh(`/repos/${OWNER}/${REPO}/git/trees`, {
 const commit = await gh(`/repos/${OWNER}/${REPO}/git/commits`, {
   method: "POST",
   body: JSON.stringify({
-    message: "Add gallery media, face models, and full MATRIX/archive components",
+    message:
+      "Add gallery media, face models, and full MATRIX/archive components",
     tree: newTree.sha,
     parents: [ref.object.sha],
   }),

@@ -8,7 +8,12 @@
     "type": "image",
     "url": "/gallery/noahwave_Dark_portrait_of_Sam_Altman_being_overtaken_by_a_Sho_83a76574-770d-4a9f-bef3-9ca25cd87111_0.png",
     "extension": "png",
-    "tags": ["image", "oracle", "portrait", "neo-tech"]
+    "tags": [
+      "image",
+      "oracle",
+      "portrait",
+      "neo-tech"
+    ]
   },
   {
     "id": "b4144d57b5de",
@@ -19,7 +24,12 @@
     "type": "image",
     "url": "/gallery/noahwave_gods_desk_--ar_34_--sref_httpss.mj.runyCmjEMs2jag_--_fd4346ba-298a-4043-95d5-1161252d34ea_0.png",
     "extension": "png",
-    "tags": ["image", "mythic", "terminal", "desk"]
+    "tags": [
+      "image",
+      "mythic",
+      "terminal",
+      "desk"
+    ]
   },
   {
     "id": "70b720a933c8",
@@ -30,7 +40,12 @@
     "type": "image",
     "url": "/gallery/photo_2021-12-19_23-42-21%20Kopie.jpg",
     "extension": "jpg",
-    "tags": ["image", "archive", "portrait", "origin"]
+    "tags": [
+      "image",
+      "archive",
+      "portrait",
+      "origin"
+    ]
   },
   {
     "id": "2305d6805549",
@@ -41,7 +56,12 @@
     "type": "video",
     "url": "/gallery/social_noahwave_death_suspended_in_time_white_room_future_ultra_real_5741f48a-e5c7-49ca-9896-7ef4980d4890_2.mp4",
     "extension": "mp4",
-    "tags": ["video", "motion", "liminal", "time"]
+    "tags": [
+      "video",
+      "motion",
+      "liminal",
+      "time"
+    ]
   },
   {
     "id": "2471d9ce2cb5",
@@ -52,7 +72,12 @@
     "type": "video",
     "url": "/gallery/social_noahwave_death_suspended_in_time_white_room_future_ultra_real_8c47e1d7-a3b6-4392-bb45-194e1777ebdd_2.mp4",
     "extension": "mp4",
-    "tags": ["video", "motion", "liminal", "time"]
+    "tags": [
+      "video",
+      "motion",
+      "liminal",
+      "time"
+    ]
   },
   {
     "id": "6d1a82e81315",
@@ -63,7 +88,12 @@
     "type": "video",
     "url": "/gallery/social_noahwave_god_--ar_5877_--motion_low_--video_1_28c6e932-dd86-4a6a-bc55-09ec4c501d2b_0.mp4",
     "extension": "mp4",
-    "tags": ["video", "motion", "mythic", "stream"]
+    "tags": [
+      "video",
+      "motion",
+      "mythic",
+      "stream"
+    ]
   },
   {
     "id": "75bafda6718d",
@@ -74,7 +104,12 @@
     "type": "video",
     "url": "/gallery/social_noahwave_god_--ar_9151_--motion_low_--video_1_--end_loop_142dcca8-e99b-47fc-ac89-2701fed7a9e0_0.mp4",
     "extension": "mp4",
-    "tags": ["video", "motion", "mythic", "loop"]
+    "tags": [
+      "video",
+      "motion",
+      "mythic",
+      "loop"
+    ]
   },
   {
     "id": "d8d1f5d2b6a7",
@@ -85,7 +120,12 @@
     "type": "image",
     "url": "/gallery/system%20crasher%20Kopie.jpg",
     "extension": "jpg",
-    "tags": ["image", "glitch", "system", "haunt"]
+    "tags": [
+      "image",
+      "glitch",
+      "system",
+      "haunt"
+    ]
   },
   {
     "id": "12425bcfea7e",
@@ -96,7 +136,12 @@
     "type": "image",
     "url": "/gallery/Wave%20Black%20Kopie.jpg",
     "extension": "jpg",
-    "tags": ["image", "signal", "void", "wave"]
+    "tags": [
+      "image",
+      "signal",
+      "void",
+      "wave"
+    ]
   },
   {
     "id": "9decd7c2d392",
@@ -107,6 +152,11 @@
     "type": "image",
     "url": "/gallery/Wave%20Whiite%20Kopie.jpg",
     "extension": "jpg",
-    "tags": ["image", "signal", "light", "wave"]
+    "tags": [
+      "image",
+      "signal",
+      "light",
+      "wave"
+    ]
   }
 ]

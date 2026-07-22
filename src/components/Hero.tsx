@@ -57,6 +57,7 @@ export function Hero() {
       id="home"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 pt-28 pb-20"
     >
+      {/* Static art debris — atmospheric, not interactive */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
         {FLOATERS.map((f) => (
