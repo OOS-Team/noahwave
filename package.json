@@ -7,7 +7,7 @@
     "dev:backend": "cd backend && .venv/bin/uvicorn main:app --reload --port 8000",
     "dev:all": "npm run dev:backend & npm run dev",
     "generate:works": "node scripts/generate-works.mjs",
-    "prebuild": "node scripts/generate-works.mjs",
+    "prebuild": "node -e \"const{existsSync}=require('fs');const{execSync}=require('child_process');if(existsSync('scripts/generate-works.mjs'))execSync('node scripts/generate-works.mjs',{stdio:'inherit'});else console.log('prebuild: no generate-works.mjs, skip');\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -26,6 +26,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "isomorphic-git": "^1.38.10",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
